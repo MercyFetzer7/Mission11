@@ -257,3 +257,4 @@
 /Users/mercyfetzer/Desktop/Mission11/backend/Mission11.API/obj/Debug/net8.0/Mission11.API.pdb
 /Users/mercyfetzer/Desktop/Mission11/backend/Mission11.API/obj/Debug/net8.0/Mission11.API.genruntimeconfig.cache
 /Users/mercyfetzer/Desktop/Mission11/backend/Mission11.API/obj/Debug/net8.0/ref/Mission11.API.dll
+/Users/mercyfetzer/Desktop/Mission11/backend/Mission11.API/obj/Debug/net8.0/Mission11.API.sourcelink.json
