@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Book } from './types/Book' // connects to the Book.ts file
 
 
-function BookList () {
+function BookList ({selectedCategories}: {selectedCategories: string[]}) {
     const[books, setBooks] = useState<Book[]>([]);
     const [pageSize, setPageSize] = useState<number>(10);
     const[pageNum, setPageNum] = useState<number>(1);
@@ -10,19 +10,18 @@ function BookList () {
     const [totalPages, setTotalPages] = useState<number>(0);
     const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');  // Track sort order
 
-
-
     // this gets the data from the API
     useEffect(() => {
         const fetchBooks = async () => {
-            const response = await fetch(`https://localhost:5000/Book/AllBooks?pageHowMany=${pageSize}&pageNum=${pageNum}`);
+            const categoryParams = selectedCategories.map((cat) => `bookTypes=${encodeURIComponent(cat)}`).join('&')
+            const response = await fetch(`https://localhost:5000/Book/AllBooks?pageHowMany=${pageSize}&pageNum=${pageNum}${selectedCategories.length ? `&${categoryParams}` : ''}`);
             const data = await response.json();
             setBooks(data.books)
             setTotalItems(data.totalNumberOfBooks)
             setTotalPages(Math.ceil(totalItems/pageSize));
         };
         fetchBooks();
-    }, [pageSize, pageNum, totalItems]);
+    }, [pageSize, pageNum, totalItems, selectedCategories]);
 
     // Sort books based on the selected order
     const sortedBooks = [...books].sort((a, b) => {
@@ -36,8 +35,6 @@ function BookList () {
 
     return (
         <>
-            <h1>Online Bookstore</h1>
-            <br />
             <label>
                 Sort by Title:
                 <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value as 'asc' | 'desc')}>
@@ -47,8 +44,8 @@ function BookList () {
             </label>
             <br />
             {sortedBooks.map((b) =>
-                <div id='projectCard' className="card" key={b.bookId}>
-                    <h3 className="card-title">{b.title}</h3>
+                <div id="projectCard" className="card" key={b.bookId} style={{ width: '700px' }}>
+                <h3 className="card-title">{b.title}</h3>
                     <div className="card-body">
                         <ul className="list-unstyled">
                             <li><strong>Author:</strong> {b.author}</li>
