@@ -16,14 +16,21 @@ namespace Mission11.API.Controllers
         }
 
         [HttpGet("AllBooks")]
-        public IActionResult GetBooks(int pageHowMany = 10, int pageNum = 1)
+        public IActionResult GetBooks(int pageHowMany = 10, int pageNum = 1, [FromQuery] List<string>? bookTypes = null)
         {
-            var something = _bookContext.Books
+            var query = _bookContext.Books.AsQueryable();
+            if (bookTypes != null && bookTypes.Any())
+            {
+                query = query.Where(b => bookTypes.Contains(b.Category));
+            }
+            
+            var totalNumberOfBooks = query.Count();
+
+            var something = query
                 .Skip((pageNum - 1) * pageHowMany) // skip number of records
                 .Take(pageHowMany) // display the number you want
                 .ToList();
             
-            var totalNumberOfBooks = _bookContext.Books.Count();
             
             var someObject = new
             {
@@ -33,11 +40,14 @@ namespace Mission11.API.Controllers
             return Ok(someObject);
         }
 
-        [HttpGet("FictionBooks")]
-        public IEnumerable<Book> GetFictionBooks()
+        [HttpGet("GetBookTypes")]
+        public IActionResult GetBookTypes()
         {
-            var something = _bookContext.Books.Where(b => b.Classification == "Fiction").ToList();
-            return something;
+            var bookTypes = _bookContext.Books
+                .Select(s => s.Category)
+                .Distinct()
+                .ToList();
+            return Ok(bookTypes);
         }
         
     }
