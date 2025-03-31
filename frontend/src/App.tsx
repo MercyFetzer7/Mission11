@@ -6,6 +6,7 @@ import AddBookPage from './pages/AddBookPage'
 import { CartProvider } from './context/CartContext'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js"; // This ensures JS components work
+import AdminBooksPage from './pages/AdminBooksPage'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path='/books' element={<BooksPage />} />
           <Route path='/addbook/:title/:bookId/:price' element={<AddBookPage />} />
           <Route path='/cart' element={<CartPage />} />
+          <Route path='/adminbooks' element={<AdminBooksPage />} />
         </Routes>
       </Router>
     </CartProvider>

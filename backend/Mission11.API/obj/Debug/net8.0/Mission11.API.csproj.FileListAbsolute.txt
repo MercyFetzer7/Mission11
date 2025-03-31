@@ -258,3 +258,9 @@
 /Users/mercyfetzer/Desktop/Mission11/backend/Mission11.API/obj/Debug/net8.0/Mission11.API.genruntimeconfig.cache
 /Users/mercyfetzer/Desktop/Mission11/backend/Mission11.API/obj/Debug/net8.0/ref/Mission11.API.dll
 /Users/mercyfetzer/Desktop/Mission11/backend/Mission11.API/obj/Debug/net8.0/Mission11.API.sourcelink.json
+/Users/mercyfetzer/Desktop/Mission11/backend/Mission11.API/bin/Debug/net8.0/Bookstore.sqlite
+/Users/mercyfetzer/Desktop/Mission11/backend/Mission11.API/bin/Debug/net8.0/publish/web.config
+/Users/mercyfetzer/Desktop/Mission11/backend/Mission11.API/bin/Debug/net8.0/publish/appsettings.Development.json
+/Users/mercyfetzer/Desktop/Mission11/backend/Mission11.API/bin/Debug/net8.0/publish/appsettings.json
+/Users/mercyfetzer/Desktop/Mission11/backend/Mission11.API/bin/Debug/net8.0/publish/Mission11.API.deps.json
+/Users/mercyfetzer/Desktop/Mission11/backend/Mission11.API/bin/Debug/net8.0/publish/Mission11.API.runtimeconfig.json
