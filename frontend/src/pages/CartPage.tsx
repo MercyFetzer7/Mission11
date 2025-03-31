@@ -38,6 +38,6 @@ function CartPage () {
             <button onClick={() => navigate('/books')}>Continue Browsing</button>
         </div>
     );
-}
+};
 
 export default CartPage;
