@@ -18,7 +18,7 @@ builder.Services.AddCors(options => // connects the data to the frontend
     options.AddPolicy("AllowFrontend",
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000", "")
+            policy.WithOrigins("http://localhost:3000", "https://proud-meadow-01b20fb1e.6.azurestaticapps.net")
                 .AllowAnyHeader()
                 .AllowAnyMethod();
 
