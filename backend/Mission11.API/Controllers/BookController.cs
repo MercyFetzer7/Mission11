@@ -50,7 +50,7 @@ namespace Mission11.API.Controllers
             return Ok(bookTypes);
         }
 
-        // Add a project to the database
+        // Add a book to the database
         [HttpPost("AddBook")]
         public IActionResult AddBook([FromBody] Book newBook) 
         {
@@ -59,7 +59,7 @@ namespace Mission11.API.Controllers
             return Ok(newBook);
         }
 
-        // Edit a project in the database
+        // Edit a book in the database
         [HttpPut("UpdateBook/{bookId}")]
         public IActionResult UpdateBook(int bookId, [FromBody] Book updatedBook) 
         {
@@ -82,7 +82,7 @@ namespace Mission11.API.Controllers
             return Ok(existingBook);
         }
 
-        // Delete a project in the database
+        // Delete a book in the database
         [HttpDelete("DeleteBook/{bookId}")]
         public IActionResult DeleteBook(int bookId)
         {
