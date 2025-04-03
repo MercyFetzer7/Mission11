@@ -58,7 +58,7 @@ function BookList({ selectedCategories }: { selectedCategories: string[] }) {
             </label>
             <br />
             {sortedBooks.map((b) => (
-                <div id="projectCard" className="card" key={b.bookId} style={{ width: "700px" }}>
+                <div id="bookCard" className="card" key={b.bookId} style={{ width: "700px" }}>
                     <h3 className="card-title">{b.title}</h3>
                     <div className="card-body">
                         {/* Bootstrap Accordion */}
