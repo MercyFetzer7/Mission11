@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 import { CartItem } from "../types/CartItem";
 
 interface CartContextType {
@@ -6,11 +6,12 @@ interface CartContextType {
     addToCart: (item: CartItem) => void;
     removeFromCart: (bookId: number) => void;
     updateQuantity: (bookId: number, quantity: number) => void; // For quantity updates
+    clearCart: () => void
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-export const CartProvider = ({ children }: { children: React.ReactNode }) => {
+export const CartProvider = ({ children }: { children: ReactNode }) => {
     const [cart, setCart] = useState<CartItem[]>([]);
 
         // Add book to cart
@@ -59,8 +60,12 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         );
     };
 
+    const clearCart = () => {
+        setCart(() => []);
+    };
+
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity }}>
+        <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart }}>
             {children}
         </CartContext.Provider>
     );
